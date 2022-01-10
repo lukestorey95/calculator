@@ -30,14 +30,19 @@ function inputPress() {
                         updateDisplay();
                         getOperator();
                     } else {
-                        calculate();
                         input.push(result);
                         input.push(buttons[i].value);
                         updateDisplay();
                         getOperator();
                         result = null;
                     }     
-                }  
+                } else {
+                    calculate();
+                    input.push(result);
+                    input.push(buttons[i].value);
+                    updateDisplay();
+                    getOperator();
+                } 
             } else if (button.contains('delete')) {
                 input.pop();
                 updateDisplay();
@@ -85,10 +90,10 @@ function calculate() {
 }
 
 function displayResult() {
-    if (!Number.isInteger(result)) {
-        result = result.toFixed(1)
+    if(result.toString().length > 4) {
+        result = result.toFixed(2);
     }
-    display.textContent = result;
+    display.innerText = result;
 }
 
 function clear() {
