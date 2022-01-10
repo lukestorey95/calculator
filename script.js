@@ -1,5 +1,6 @@
 let displayValue = '';
 let input = [];
+let operator = null;
 let result = null;
 const buttons = document.querySelectorAll('button');
 const display = document.getElementById('display');
@@ -22,12 +23,26 @@ function inputPress() {
             if (button.contains('input')) {
                 input.push(buttons[i].value);
                 updateDisplay();
+            } else if (button.contains('operator')) {
+                if (!operator) {
+                    if (!result) {
+                        input.push(buttons[i].value);
+                        updateDisplay();
+                        getOperator();
+                    } else {
+                        calculate();
+                        input.push(result);
+                        input.push(buttons[i].value);
+                        updateDisplay();
+                        getOperator();
+                        result = null;
+                    }     
+                }  
             } else if (button.contains('delete')) {
                 input.pop();
                 updateDisplay();
             } else if (button.contains('clear')) {
                 clear();
-                updateDisplay();
             } else if (button.contains('equals')) {
                 calculate();
             }
@@ -37,53 +52,35 @@ function inputPress() {
 
 inputPress();
 
-function getOperator(input) {
-    switch (input) {
-        case ' + ':
-            return '+'
-            break;
-        case ' - ':
-            return '-'
-            break;
-        case ' x ':
-            return '*'
-            break;
-        case ' ÷ ':
-            return '/'
-            break;
-    }
+function getOperator() {
+    const operators = [' + ', ' - ', ' x ', ' ÷ ']
+    operator = input.filter(operator => operators.includes(operator)).toString();
 }
 
 function calculate() {
-    const operators = [' + ', ' - ', ' x ', ' ÷ ']
-    let operator = input.filter(operator => operators.includes(operator)).toString();
-    // console.log(operator);
     let operatorIndex = input.indexOf(operator);
-    // console.log(operatorIndex);
     let firstValue = input.slice(0, operatorIndex).join('');
-    // console.log(firstValue);
     let secondValue = input.slice((operatorIndex + 1), (input.length)).join('');
-    // console.log(secondValue);
     if (operator === ' + ') {
         result = Number(firstValue) + Number(secondValue);
-        // console.log(result);
         displayResult()
         input = [];
+        operator = null;
     } else if (operator === ' - ') {
-        result = firstValue - secondValue;
-        // console.log(result);
+        result = Number(firstValue) - Number(secondValue);
         displayResult()
         input = [];
+        operator = null;
     } else if (operator === ' x ') {
-        result = firstValue * secondValue;
-        // console.log(result);
+        result = Number(firstValue) * Number(secondValue);
         displayResult()
         input = [];
+        operator = null;
     } else if (operator === ' ÷ ') {
-        result = firstValue / secondValue;
-        // console.log(result);
+        result = Number(firstValue) / Number(secondValue);
         displayResult()
         input = [];
+        operator = null;
     }
 }
 
@@ -95,4 +92,6 @@ function clear() {
     displayValue = '';
     input = [];
     result = null;
+    operator = null;
+    updateDisplay();
 }
