@@ -85,6 +85,9 @@ function calculate() {
 }
 
 function displayResult() {
+    if (!Number.isInteger(result)) {
+        result = result.toFixed(1)
+    }
     display.textContent = result;
 }
 
