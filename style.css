@@ -1,0 +1,30 @@
+.button {
+  height: 95px;
+  width: 95px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(6, auto);
+  gap: 20px 20px;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 450px;
+  margin: auto;
+  padding: 20px;
+  background-color: #011627;
+}
+
+.span {
+  width: auto;
+  grid-column-start: span 2;
+}
+
+.window {
+  grid-column-end: span 4;
+  background-color: #fdfffc;
+  text-align: end;
+  height: 143px;
+}
