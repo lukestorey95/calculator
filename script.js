@@ -5,6 +5,28 @@ let result = null;
 const buttons = document.querySelectorAll('button');
 const display = document.getElementById('display');
 
+window.addEventListener('keydown', function(e){
+    if (e.key === "1") {document.querySelector(".one").click();} 
+    if (e.key === "2") {document.querySelector(".two").click();} 
+    if (e.key === "3") {document.querySelector(".three").click();} 
+    if (e.key === "4") {document.querySelector(".four").click();} 
+    if (e.key === "5") {document.querySelector(".five").click();} 
+    if (e.key === "6") {document.querySelector(".six").click();} 
+    if (e.key === "7") {document.querySelector(".seven").click();} 
+    if (e.key === "8") {document.querySelector(".eight").click();} 
+    if (e.key === "9") {document.querySelector(".nine").click();} 
+    if (e.key === "0") {document.querySelector(".ten").click();} 
+    if (e.key === ".") {document.querySelector(".point").click();} 
+    if (e.key === "+") {document.querySelector(".plus").click();} 
+    if (e.key === "-") {document.querySelector(".minus").click();} 
+    if (e.key === "/") {document.querySelector(".divide").click();} 
+    if (e.key === "*") {document.querySelector(".times").click();} 
+    if (e.key === "Backspace") {document.querySelector(".delete").click();} 
+    if (e.key === "Enter") {document.querySelector(".equals").click();} 
+    if (e.key === "=") {document.querySelector(".equals").click();} 
+    if (e.key === "Escape") {document.querySelector(".clear").click();} 
+});
+
 function inputToDisplay() {
     displayValue = input.join('');
 }
@@ -16,7 +38,7 @@ function updateDisplay() {
 
 updateDisplay();
 
-function inputPress() {
+function clickInput() {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             let button = buttons[i].classList;
@@ -55,7 +77,7 @@ function inputPress() {
     }
 }
 
-inputPress();
+clickInput();
 
 function getOperator() {
     const operators = [' + ', ' - ', ' x ', ' ÷ ']
