@@ -15,7 +15,7 @@ window.addEventListener('keydown', function(e){
     if (e.key === "7") {document.querySelector(".seven").click();} 
     if (e.key === "8") {document.querySelector(".eight").click();} 
     if (e.key === "9") {document.querySelector(".nine").click();} 
-    if (e.key === "0") {document.querySelector(".ten").click();} 
+    if (e.key === "0") {document.querySelector(".zero").click();} 
     if (e.key === ".") {document.querySelector(".point").click();} 
     if (e.key === "+") {document.querySelector(".plus").click();} 
     if (e.key === "-") {document.querySelector(".minus").click();} 
